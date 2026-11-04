@@ -1,0 +1,94 @@
+_config_version: 52
+model:
+  default: deepseek-v4-pro
+  provider: lan-deepseek
+  base_url: http://YOUR-LLM-HOST:PORT
+  api_mode: anthropic_messages
+providers:
+  lan-deepseek:
+    api: http://YOUR-LLM-HOST:PORT
+    transport: anthropic_messages
+    default_model: deepseek-v4-pro
+    key_env: HERMES_LAN_DEEPSEEK_KEY
+    discover_models: false
+    models:
+      deepseek-flash: {}
+      deepseek-v4-pro: {}
+fallback_providers: []
+agent:
+  bot_mode_protocol: true
+  coding_context: 'off'
+  disabled_toolsets:
+    - project
+    - catalog
+    - desktop_ui
+platform_toolsets:
+  cli:
+    - file
+    - skills
+    - terminal
+    - web
+  gui:
+    - file
+    - skills
+    - terminal
+    - web
+  acp:
+    - file
+    - skills
+    - terminal
+    - web
+web:
+  backend: tavily
+  provider_tier:
+    tavily: free
+known_plugin_toolsets:
+  cli:
+    - a2a
+known_builtin_toolsets:
+  cli:
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - connections
+    - context_engine
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - session_search
+    - skills
+    - stt
+    - terminal
+    - todo
+    - tts
+    - video
+    - video_gen
+    - vision
+    - web
+    - x_search
+    - yuanbao
+approvals:
+  deny:
+    - 'git push*'
+    - 'git * push*'
+    - 'git reset --hard*'
+    - 'git * reset --hard*'
+    - 'git clean*'
+    - 'git * clean*'
+    - 'git branch -D*'
+    - 'git * branch -D*'
+    - 'git stash drop*'
+    - 'git stash clear*'
+    - 'git filter-branch*'
+    - 'git * filter-branch*'
+    - 'git reflog expire*'
+    - 'git gc --prune*'
+plugins:
+  enabled:
+    - no-main-commit

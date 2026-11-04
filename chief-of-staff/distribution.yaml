@@ -1,0 +1,17 @@
+name: chief-of-staff
+version: 1.0.0
+description: "幕僚长：排优先级、准备决策、接续项目；只读，冲突时中立汇总交用户拍板。"
+hermes_requires: ">=0.22.0"
+author: "yinjiawen97"
+license: "MIT"
+env_requires:
+  - name: HERMES_LAN_DEEPSEEK_KEY
+    description: "你的 deepseek 兼容服务的 API key；地址在 config.yaml 的 YOUR-LLM-HOST:PORT 处填写"
+    required: true
+distribution_owned:
+  - SOUL.md
+  - config.yaml
+  - distribution.yaml
+  - skills/chief-of-staff/
+  - skills/evidence/
+  - plugins/readonly-guard/

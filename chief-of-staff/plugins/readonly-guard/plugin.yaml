@@ -1,0 +1,3 @@
+name: readonly-guard
+version: "1.0"
+description: 幕僚长只读：拦截写文件和打补丁的工具调用

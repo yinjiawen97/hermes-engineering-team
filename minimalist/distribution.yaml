@@ -1,0 +1,17 @@
+name: minimalist
+version: 1.0.0
+description: "极简工程师：团队里唯一写代码的人，按 ub-mode 先测试后最小改动；能在分支上提交，不能推送、不能直接提交到 main/master。"
+hermes_requires: ">=0.22.0"
+author: "yinjiawen97"
+license: "MIT"
+env_requires:
+  - name: HERMES_LAN_DEEPSEEK_KEY
+    description: "你的 deepseek 兼容服务的 API key；地址在 config.yaml 的 YOUR-LLM-HOST:PORT 处填写"
+    required: true
+distribution_owned:
+  - SOUL.md
+  - config.yaml
+  - distribution.yaml
+  - skills/ub-mode/
+  - skills/evidence/
+  - plugins/no-main-commit/

@@ -1,0 +1,75 @@
+_config_version: 52
+model:
+  default: deepseek-flash
+  provider: lan-deepseek
+  base_url: http://YOUR-LLM-HOST:PORT
+  api_mode: anthropic_messages
+providers:
+  lan-deepseek:
+    api: http://YOUR-LLM-HOST:PORT
+    transport: anthropic_messages
+    default_model: deepseek-flash
+    key_env: HERMES_LAN_DEEPSEEK_KEY
+    discover_models: false
+    models:
+      deepseek-flash: {}
+      deepseek-v4-pro: {}
+fallback_providers: []
+agent:
+  bot_mode_protocol: true
+  coding_context: 'off'
+  disabled_toolsets:
+    - project
+    - catalog
+    - desktop_ui
+platform_toolsets:
+  cli:
+    - file
+    - skills
+    - web
+  gui:
+    - file
+    - skills
+    - web
+  acp:
+    - file
+    - skills
+    - web
+web:
+  backend: tavily
+  provider_tier:
+    tavily: free
+known_plugin_toolsets:
+  cli:
+    - a2a
+known_builtin_toolsets:
+  cli:
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - connections
+    - context_engine
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - session_search
+    - skills
+    - stt
+    - terminal
+    - todo
+    - tts
+    - video
+    - video_gen
+    - vision
+    - web
+    - x_search
+    - yuanbao
+plugins:
+  enabled:
+    - readonly-guard

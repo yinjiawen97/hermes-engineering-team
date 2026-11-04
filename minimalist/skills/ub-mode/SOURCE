@@ -1,0 +1,4 @@
+source: https://github.com/unclebob/ub-mode
+commit: 3da62bf3fcfd2034de41f30d920d2739e566171f
+fetched: 2026-11-03
+原样未改。和本团队设计冲突的地方（不推送等）在 SOUL.md 里覆盖，不改这份文件。

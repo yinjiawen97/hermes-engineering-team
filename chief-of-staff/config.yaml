@@ -1,0 +1,110 @@
+_config_version: 52
+model:
+  default: deepseek-flash
+  provider: lan-deepseek
+  base_url: http://YOUR-LLM-HOST:PORT
+  api_mode: anthropic_messages
+providers:
+  lan-deepseek:
+    api: http://YOUR-LLM-HOST:PORT
+    transport: anthropic_messages
+    default_model: deepseek-flash
+    key_env: HERMES_LAN_DEEPSEEK_KEY
+    discover_models: false
+    models:
+      deepseek-flash: {}
+      deepseek-v4-pro: {}
+fallback_providers: []
+agent:
+  bot_mode_protocol: false
+  coding_context: 'off'
+  disabled_toolsets:
+    - project
+    - catalog
+    - desktop_ui
+platform_toolsets:
+  cli:
+    - file
+    - memory
+    - skills
+    - terminal
+    - web
+  gui:
+    - file
+    - memory
+    - skills
+    - terminal
+    - web
+  acp:
+    - file
+    - memory
+    - skills
+    - terminal
+    - web
+web:
+  backend: tavily
+  provider_tier:
+    tavily: free
+telemetry:
+  shared_metrics:
+    enabled: true
+    send: true
+    offer_version: 2
+plugins:
+  enabled:
+    - readonly-guard
+approvals:
+  deny:
+    - 'git commit*'
+    - 'git * commit*'
+    - 'git push*'
+    - 'git * push*'
+    - 'git checkout*'
+    - 'git * checkout*'
+    - 'git switch*'
+    - 'git * switch*'
+    - 'git reset*'
+    - 'git * reset*'
+    - 'git restore*'
+    - 'git * restore*'
+    - 'git stash*'
+    - 'git * stash*'
+    - 'git merge*'
+    - 'git * merge*'
+    - 'git rebase*'
+    - 'git * rebase*'
+    - 'git add*'
+    - 'git * add*'
+    - 'git rm*'
+    - 'git * rm*'
+    - 'git tag*'
+    - 'git * tag*'
+    - 'git cherry-pick*'
+    - 'git * cherry-pick*'
+    - 'git revert*'
+    - 'git * revert*'
+    - 'git clean*'
+    - 'git * clean*'
+    - 'git am*'
+    - 'git * am*'
+    - 'git apply*'
+    - 'git * apply*'
+    - 'git branch -[dDmM]*'
+    - 'git * branch -[dDmM]*'
+    - 'make*'
+    - 'go build*'
+    - 'go generate*'
+    - 'go mod tidy*'
+    - 'go install*'
+    - 'go run*'
+    - 'go vet*'
+    - 'go test*'
+    - 'golangci-lint*'
+    - 'npm *'
+    - 'pnpm *'
+    - 'yarn *'
+    - 'rm *'
+    - 'mv *'
+    - 'cp *'
+    - 'tee *'
+    - 'truncate *'
