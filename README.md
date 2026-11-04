@@ -4,17 +4,19 @@
 
 | bot | 干什么 | 能做什么 | 带的原则 |
 |---|---|---|---|
-| `chief-of-staff` 幕僚长 | 排优先级、准备决策、接续项目；冲突时并排列出双方理由，给一个建议 | 只读：看 git 状态和文档；写文件、改状态的命令在工具层被拦 | evidence |
+| `chief-of-staff` 幕僚长 | 排优先级、准备决策、接续项目；冲突时并排列出双方理由，给一个建议 | 只读：看 git 状态和文档；只能写看板目录和自己的缓存目录，其余写入、改状态的命令和改 skill 都在工具层被拦 | evidence |
 | `minimalist` 极简工程师 | 唯一写代码的人：先写失败的测试，再做最小改动，用质量工具验证，交付 diff、证据和删掉了什么 | 能写、能在分支上提交；不能推送，不能直接提交到 main/master，不能做不可逆的 git 操作 | ub-mode + evidence |
-| `architect` 架构师 | 只评审：结构、类型、边界、幂等 | 只能读文件，没有终端，不能写 | model-the-domain、type-system、boundary、idempotent、encode-lessons |
+| `architect` 架构师 | 只评审：结构、类型、边界、幂等 | 只能读文件，没有终端，不能写，也不能改自己的 skill | model-the-domain、type-system、boundary、idempotent、encode-lessons |
 
 ## 硬约束在工具层，不只是文字
 
 SOUL 里写的规则模型偶尔会忽略，所以真正不能越过的线放在工具层：
 
-- `readonly-guard` 插件（幕僚长、架构师）：拦截 `write_file` 和 `patch`。
+- `readonly-guard` 插件（幕僚长、架构师）：拦截 `write_file`、`patch` 和 `skill_manage`。幕僚长的版本只放行看板目录和它自己的 `cache/`，并检查终端里的重定向、`curl -o`/`wget`、`sed -i`、一行脚本和 heredoc 脚本写文件；判断不了写到哪里就拦。
 - `no-main-commit` 插件（极简工程师）：在 main/master 上提交、同一条命令里先切分支再提交、判断不了目录时，一律拦下。
 - `config.yaml` 里的 `approvals.deny`：幕僚长拦 git 写操作、构建、测试、删除等命令；极简工程师只拦推送、`reset --hard`、`clean` 这类不可逆的操作。
+
+这些仍是按命令文本判断的规则，不是操作系统级沙盒：用变量拼路径或先写脚本再执行，仍可能绕过。要彻底隔离，把终端放进容器里跑。
 
 ## 安装
 

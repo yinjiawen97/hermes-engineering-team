@@ -1,5 +1,5 @@
 name: architect
-version: 1.0.0
+version: 1.1.0
 description: "架构师：只评审结构、类型、边界和幂等；只能读文件，不写代码。"
 hermes_requires: ">=0.22.0"
 author: "yinjiawen97"
